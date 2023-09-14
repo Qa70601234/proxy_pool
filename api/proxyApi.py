@@ -64,6 +64,13 @@ def get():
     return proxy.to_dict if proxy else {"code": 0, "src": "no proxy"}
 
 
+@app.route('/ip/')
+def ipp():
+    https = request.args.get("type", "").lower() == 'https'
+    proxy = proxy_handler.get(https)
+    return proxy.to_dict.get('proxy')
+
+
 @app.route('/pop/')
 def pop():
     https = request.args.get("type", "").lower() == 'https'
