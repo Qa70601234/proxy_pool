@@ -40,7 +40,8 @@ class JsonResponse(Response):
 
 
 app.response_class = JsonResponse
-
+#解决网页中文乱码
+app.config['JSON_AS_ASCII'] = False
 api_list = [
     {"url": "/get", "params": "type: ''https'|''", "desc": "get a proxy"},
     {"url": "/pop", "params": "", "desc": "get and delete a proxy"},
